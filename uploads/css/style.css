@@ -1,0 +1,28 @@
+body {
+  background-color: #f8f9fa;
+  font-family: sans-serif;
+}
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+.card {
+  transition: transform 0.2s;
+  border: none;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+footer {
+    padding: 8px 0;
+    font-size: 0.85rem;
+}
+
+@media (min-width: 576px) {
+    footer {
+        padding: 6px 0;
+        font-size: 0.75rem;
+    }
+}
+
