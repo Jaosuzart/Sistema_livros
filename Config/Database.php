@@ -5,7 +5,6 @@ class Database {
     public ?PDO $pdo = null;
 
     public function __construct() {
-        // Se o config.php estiver na mesma pasta Config/
         $this->config = require __DIR__ . '/Config.php';
     }
 
