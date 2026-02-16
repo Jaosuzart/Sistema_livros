@@ -27,12 +27,6 @@
             <label class="form-label">Trocar capa (opcional)</label>
             <input type="file" name="imagem" class="form-control" accept="image/*">
           </div>
-
-          <div class="mb-3">
-            <label class="form-label">Link</label>
-            <input type="url" name="link" class="form-control" value="<?= htmlspecialchars($livro['link'] ?? '') ?>">
-          </div>
-
           <button type="submit" class="btn btn-primary">Salvar</button>
           <a href="index.php?acao=listar" class="btn btn-secondary">Voltar</a>
         </form>

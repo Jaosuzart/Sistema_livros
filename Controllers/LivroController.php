@@ -44,7 +44,8 @@ class LivroController extends BaseController
     $titulo = $_POST['titulo'] ?? '';
     $autor  = $_POST['autor'] ?? '';
     $descricao = $_POST['descricao'] ?? '';
-
+    $ano = !empty($_POST['ano']) ? (int)$_POST['ano'] : null;
+    $livroModel->criar($titulo, $autor, $descricao, $capa, null, $ano);
     $livroModel->criar($titulo, $autor, $descricao, $capa, null);
 
     header("Location: index.php?acao=listar");
@@ -86,7 +87,7 @@ class LivroController extends BaseController
         $titulo = $_POST['titulo'] ?? '';
         $autor  = $_POST['autor'] ?? '';
         $descricao = $_POST['descricao'] ?? '';
-        $link = $_POST['link'] ?? null;
+        $ano = !empty($_POST['ano']) ? (int)$_POST['ano'] : null;
 
         // null = manter a capa atual
         $capa = null;
@@ -107,7 +108,7 @@ class LivroController extends BaseController
             }
         }
 
-        $livroModel->atualizar($id, $titulo, $autor, $descricao, $capa, $link);
+        $livroModel->atualizar($id, $titulo, $autor, $descricao, $capa, null, $ano);
 
         header("Location: index.php?acao=listar");
         exit;

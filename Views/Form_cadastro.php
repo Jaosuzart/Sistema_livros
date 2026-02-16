@@ -16,6 +16,12 @@
             <input type="text" name="autor" class="form-control" required>
           </div>
 
+              <div class="mb-3">
+            <label class="form-label">Ano</label>
+            <input type="text" name="ano" class="form-control" required>
+          </div>
+
+
           <div class="mb-3">
             <label class="form-label">Descrição</label>
             <textarea name="descricao" class="form-control"></textarea>
@@ -25,13 +31,7 @@
             <label class="form-label">Capa (opcional)</label>
             <input type="file" name="imagem" class="form-control" accept="image/*">
           </div>
-
-          <div class="mb-3">
-            <label class="form-label">Link</label>
-            <input type="url" name="link" class="form-control">
-          </div>
-
-          <button type="submit" class="btn btn-success w-100">Salvar Livro</button>
+  <button type="submit" class="btn btn-success w-100">Salvar Livro</button>
           <a href="index.php?acao=listar" class="btn btn-secondary w-100 mt-2">Cancelar</a>
 
         </form>

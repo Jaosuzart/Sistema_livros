@@ -23,7 +23,10 @@
         <option value="devolvido" <?php echo ($emp['status'] ?? '') === 'devolvido' ? 'selected' : ''; ?>>Devolvido</option>
       </select>
     </div>
-
+<div class="mb-3">
+    <label class="form-label">Ano</label>
+    <input type="number" name="ano" class="form-control" value="<?php echo htmlspecialchars($emp['ano'] ?? ''); ?>">
+</div>
     <div class="mb-3">
       <label class="form-label">Data de devolução</label>
       <input type="date" name="data_devolucao" class="form-control"

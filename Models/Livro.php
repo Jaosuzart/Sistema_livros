@@ -22,12 +22,11 @@ class Livro {
         $stmt->bindValue(':autor', $autor);
         $stmt->bindValue(':descricao', $descricao);
         $stmt->bindValue(':capa', $capa);
-        $stmt->bindValue(':link', $link);
-
+        $stmt->bindValue(':ano', $ano ?? null);
         return $stmt->execute();
     }
 
-    public function atualizar(int $id, string $titulo, string $autor, string $descricao, ?string $capa, ?string $link): bool {
+    public function atualizar(int $id, string $titulo, string $autor, string $descricao, ?string $capa, ?string $link, ?int $ano): bool {
         if ($capa === null) {
             $sql = "UPDATE livros
                     SET titulo = :titulo,

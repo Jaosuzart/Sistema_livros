@@ -40,13 +40,32 @@ $baseUrl = '/Sistema_livros';
                         // --- 3. LÓGICA DO STATUS ---
                         // Garante que status nunca seja nulo
                         $status = $emp['status'] ?? 'indefinido';
-                        
+                        $textoBadge = ucfirst(htmlspecialchars($status));
+                        $temDataReal = !empty($emp['data_devolucao']) && $emp['data_devolucao'] !== '0000-00-00';
+                        $temPrazo    = !empty($emp['data_prevista_devolucao']) && $emp['data_prevista_devolucao'] !== '0000-00-00';
+                        $hoje = date('Y-m-d');
                         if ($status === 'devolvido') {
                             $statusClass = 'bg-success';
-                        } else {
-                            $statusClass = 'bg-warning text-dark';
+                        if($temDataReal){
+                            $dataExibida = date('d/m/Y', strtotime($emp['data_devolucao']));
+                            $corData = 'text-success fw-bold';
+                            $legenda = '';
                         }
-
+                        else{
+                            if($temPrazo){
+                         $dataExibida = date('d/m/Y', strtotime($emp['data_prevista_devolucao']));
+                           if($hoje> $emp['data_prevista_devolucao']){
+                            $statusClass = 'bg-danger';
+                            $textoBadge = 'Atrasado';
+                            $corData = 'text-danger fw-bold';
+                            $legenda = '(Atrasado)';
+                           } else{
+                            $corData = 'bg-warning text-dark fw-bold';
+                            $legenda = '(Prazo)';
+                           }
+                            }
+                        }
+                        }
                         // --- 4. LÓGICA DA DATA ---
                         $temDataReal = !empty($emp['data_devolucao']) && $emp['data_devolucao'] !== '0000-00-00';
                         $temPrazo    = !empty($emp['data_prevista_devolucao']) && $emp['data_prevista_devolucao'] !== '0000-00-00';
@@ -89,7 +108,7 @@ $baseUrl = '/Sistema_livros';
 
                         <td class="text-center">
                             <span class="badge <?= $statusClass ?>">
-                                <?= ucfirst(htmlspecialchars($status ?? '')) ?>
+                                <?= (htmlspecialchars($textoBadge ?? '')) ?>
                             </span>
                         </td>
 

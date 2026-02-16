@@ -1,22 +1,20 @@
 <?php
 
 class Database {
-    private array $config;
     public ?PDO $pdo = null;
 
     public function __construct() {
-        // Se o config.php estiver na mesma pasta Config/
-        $this->config = require __DIR__ . '/Config.php';
+        require_once __DIR__ . '/Config.php'; // carrega as constantes
     }
 
     public function conectar(): PDO {
         try {
-            $dsn = "mysql:host={$this->config['host']};dbname={$this->config['dbname']};charset=utf8mb4";
+            $dsn = "mysql:host=" . MYSQL_HOST . ";dbname=" . MYSQL_DATABASE . ";charset=utf8mb4";
 
             $this->pdo = new PDO(
                 $dsn,
-                $this->config['user'],
-                $this->config['pass'],
+                MYSQL_USERNAME,
+                MYSQL_PASSWORD,
                 [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
