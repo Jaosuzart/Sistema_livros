@@ -50,8 +50,6 @@ $baseUrl = '/Sistema_livros';
             <li class="nav-item">
                 <a class="btn btn-danger btn-sm" href="index.php?acao=logout">Sair</a>
             </li>
-        <?php else: ?>
-            <li class="nav-item"><a class="nav-link" href="index.php?acao=login">Login</a></li>
         <?php endif; ?>
 
       </ul>
