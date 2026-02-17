@@ -24,7 +24,6 @@ Focado em organização de código, boas práticas de desenvolvimento web e Prog
 *   **Arquitetura:** MVC (Model-View-Controller)
 *   **Versionamento:** Git
 ## 🗂️ Estrutura do Projeto
-text
 Sistema_livros/
 │── Config/
 │   ├── Config.php          # Configurações gerais
