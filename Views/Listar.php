@@ -1,6 +1,6 @@
 <?php
 // Ajuste a URL base se necessário
-$baseUrl = '/Sistema_livros'; 
+$baseUrl = '/sistema_livros_1'; 
 ?>
 
 <div class="d-flex justify-content-between align-items-center mb-4 mt-3">
