@@ -5,15 +5,21 @@ require_once __DIR__ . '/../Models/Livro.php';
 
 class LivroController extends BaseController
 {
-    public function listar()
-    {
+   public function listar() {
         $db = (new Database())->conectar();
         $livroModel = new Livro($db);
-
-        $stmt = $livroModel->lerTodos();
-        $dadosLivros = $stmt->fetchAll();
-
-        $this->view('Listar', ['livros' => $dadosLivros]);
+        
+        // Verifica se veio alguma pesquisa pela URL
+        $busca = $_GET['busca'] ?? '';
+        
+        if (!empty($busca)) {
+            $livros = $livroModel->buscarPorTitulo($busca); // Puxa só os pesquisados
+        } else {
+            $livros = $livroModel->lerTodos(); // Puxa todos
+        }
+        
+        // Envia a lista e o termo pesquisado para a tela
+        $this->view('Listar', ['livros' => $livros, 'busca' => $busca]);
     }
 
     public function criar()
@@ -46,7 +52,6 @@ class LivroController extends BaseController
     $descricao = $_POST['descricao'] ?? '';
     $ano = !empty($_POST['ano']) ? (int)$_POST['ano'] : null;
     $livroModel->criar($titulo, $autor, $descricao, $capa, null, $ano);
-    $livroModel->criar($titulo, $autor, $descricao, $capa, null);
 
     header("Location: index.php?acao=listar");
     exit;
@@ -130,4 +135,5 @@ class LivroController extends BaseController
         header("Location: index.php?acao=listar");
         exit;
     }
+    
 }

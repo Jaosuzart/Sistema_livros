@@ -27,5 +27,16 @@ class Usuario {
 
         return $stmt->execute();
     }
+    public function lerTodos() {
+        $sql = "SELECT id_usuario, nome, email FROM usuarios ORDER BY nome ASC";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function contarTotal() {
+        $stmt = $this->conn->prepare("SELECT COUNT(*) FROM usuarios");
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
 }
 ?>
